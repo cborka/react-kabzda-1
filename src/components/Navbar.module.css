@@ -1,0 +1,12 @@
+.nav {
+    grid-area: n;
+    background-color: burlywood;
+}
+
+.item {
+    color: coral;
+}
+
+a {
+    color: yellow;
+}
