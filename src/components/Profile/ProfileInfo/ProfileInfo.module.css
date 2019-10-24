@@ -1,0 +1,13 @@
+.profileInfo {
+
+}
+
+.profileInfo .ava {
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
+}
+
+.descriptionBlock {
+    padding:10px;
+}
