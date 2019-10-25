@@ -1,8 +1,8 @@
 .nav {
-    grid-area: n;
-    background-color: burlywood;
-
+    background-color: blanchedalmond;
     padding:20px;
+
+    text-align: left;
 }
 
 .item a {

@@ -1,0 +1,17 @@
+.sidebar {
+    grid-area: n;
+    background-color: burlywood;
+
+    text-align: center;
+
+    padding:20px;
+}
+
+.item a {
+    color: white;
+    text-decoration: none;
+}
+
+.item a.activeLink {
+    color: gold;
+}
