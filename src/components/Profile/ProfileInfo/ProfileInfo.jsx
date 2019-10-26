@@ -10,7 +10,7 @@ const ProfileInfo = () => {
 
             <div className={s.descriptionBlock}>
                 <img className={s.ava}
-                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5T9mDfy0eWJY8jKLwofob7cPJiKGDLGEy_hJPdVGRki0Y5PMa6g'></img>
+                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSTS7LFEGuHZFKOc_AtQudyknAdpG1PtpKDX-81XeaB_6xJstKD'></img>
             </div>
         </div>
      )
