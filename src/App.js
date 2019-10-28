@@ -8,33 +8,34 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import {BrowserRouter, Route} from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
+import store from "./redux/state";
 
 
 const App = (props) => {
     return (
-        <BrowserRouter>
-            <div className='app-wrapper'>
-                <Header/>
-                {/*{props.state.sidebar.friends[1].toString()}*/}
-                <Sidebar state={props.state.sidebarPage}   />
-                <div className='app-wrapper-content'>
-                    <Route path='/Dialogs' render={() => <Dialogs
-                        dialogsPage={props.state.dialogsPage}
-                        addMessage={props.addMessage}
-                        updateNewMessage={props.updateNewMessage}
-                    />} />
-                    <Route path='/Profile' render={() => <Profile
-                        profilePage={props.state.profilePage}
-                        addPost={props.addPost}
-                        updateNewPostText={props.updateNewPostText}
-                    />}/>
-                    <Route path='/News' component={News}/>
-                    <Route path='/Music' component={Music}/>
-                    <Route path='/Settings' component={Settings}/>
-                </div>
-                <footer className='footer'>footer</footer>
+
+        <div className='app-wrapper'>
+            <Header/>
+            {/*{props.state.sidebar.friends[1].toString()}*/}
+            <Sidebar state={props.state.sidebarPage}/>
+            <div className='app-wrapper-content'>
+                <Route path='/Dialogs' render={() => <Dialogs
+                    store={store}
+                    dispatch={props.dispatch}
+                    dialogsPage={props.state.dialogsPage}
+                />}/>
+                <Route path='/Profile' render={() => <Profile
+                    store={store}
+                    profilePage={props.state.profilePage}
+                    dispatch={props.dispatch}
+                />}/>
+                <Route path='/News' component={News}/>
+                <Route path='/Music' component={Music}/>
+                <Route path='/Settings' component={Settings}/>
             </div>
-        </BrowserRouter>
+            <footer className='footer'>footer</footer>
+        </div>
+
     );
 };
 
