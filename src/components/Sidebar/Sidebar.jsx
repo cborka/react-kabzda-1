@@ -5,11 +5,14 @@ import Navbar from "./Navbar/Navbar";
 
 
 const Sidebar = (props) => {
+
+    let friends = props.store.getState().sidebarPage.friends;
+
     return (
         <div className={s.sidebar}>
             <Navbar/>
             <h3>Верные друзья</h3>
-            <Friends friends={props.state.friends}/>
+            <Friends friends={friends}/>
         </div>
         )
  };

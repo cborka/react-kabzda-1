@@ -1,33 +1,29 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {addPostActionCreator, updateNewPostActionCreator} from "../../../redux/profile-reduser";
-
-
 
 const MyPosts = (props) => {
     let postsElements = props.posts.map(
         (p) => <Post message={p.post} like={p.likeCount}/>
     );
 
-    let newPostElement = React.createRef();
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
+    let onAddPost = () => {
+        props.addPost();
     };
 
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.dispatch(updateNewPostActionCreator(text));
+    let onPostChange = (e) => {
+        let text = e.target.value;
+        props.updateNewPost(text);
     };
 
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
             <div>
-                <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
+                <textarea onChange={onPostChange} value={props.newPostText} />
             </div>
             <div>
-                <button onClick={addPost}>Add post</button>
+                <button onClick={onAddPost}>Add post</button>
             </div>
 
             <div className={s.posts}>
@@ -35,7 +31,6 @@ const MyPosts = (props) => {
             </div>
         </div>
     )
-
 };
 
 export default MyPosts;

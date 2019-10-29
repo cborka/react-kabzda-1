@@ -63,7 +63,7 @@ let store = {
     _callSubscriber () {
         console.log('store: observer не назначен.');
     },
-    subscriber (observer) {
+    subscribe (observer) {
         this._callSubscriber = observer;
     },
     getState () {
