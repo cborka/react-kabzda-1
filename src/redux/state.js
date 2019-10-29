@@ -1,19 +1,9 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
+import dialogReduser from "./dialogs-reduser";
+import profileReduser from "./profile-reduser";
+import sidebarReduser from "./sidebar-reduser";
 
-let rerenderEntireTree = () => {
-    console.log('state changed');
-};
 let store = {
-    _callSubscriber () {
-        console.log('store: observer не назначен.');
-    },
-    subscriber (observer) {
-        this._callSubscriber = observer;
-    },
-    _state: {
+     _state: {
         dialogsPage: {
             dialogs: [
                 {
@@ -70,83 +60,24 @@ let store = {
         }
     },
 
+    _callSubscriber () {
+        console.log('store: observer не назначен.');
+    },
+    subscriber (observer) {
+        this._callSubscriber = observer;
+    },
     getState () {
         return this._state;
     },
 
-    addPost () {
-        let newPost = {
-            id: 5,
-            post: this._state.profilePage.newPostText,
-            likeCount: 0
-        };
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber();
-    },
-    updateNewPostText (text) {
-        this._state.profilePage.newPostText = text;
-        this._callSubscriber();
-    },
-    addMessage () {
-        let newMessage = {
-                id: 7,
-                message: this._state.dialogsPage.newMessage
-            }
-        ;
-        this._state.dialogsPage.messages.push(newMessage);
-        this._state.dialogsPage.newMessage = '';
-        this._callSubscriber();
-    },
-    updateNewMessage (text) {
-        this._state.dialogsPage.newMessage = text;
-        this._callSubscriber();
-    },
-
     dispath (action) {
-        debugger;
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 5,
-                post: this._state.profilePage.newPostText,
-                likeCount: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber();
-        }
-        else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber();
-        }
-        else if (action.type === ADD_MESSAGE) {
-            let newMessage = {
-                    id: 7,
-                    message: this._state.dialogsPage.newMessage
-                }
-            ;
-            this._state.dialogsPage.messages.push(newMessage);
-            this._state.dialogsPage.newMessage = '';
-            this._callSubscriber();
-        }
-        else if (action.type === UPDATE_NEW_MESSAGE) {
-            this._state.dialogsPage.newMessage = action.newText;
-            this._callSubscriber();
-        }
+        this._state.dialogsPage = dialogReduser(this._state.dialogsPage, action);
+        this._state.profilePage = profileReduser(this._state.profilePage, action);
+        this._state.sidebarPage = sidebarReduser(this._state.sidebarPage, action);
+
+        this._callSubscriber();
     }
-
-
 };
-
-
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostActionCreator = (text) =>
-    ({type: UPDATE_NEW_POST_TEXT, newText: text});
-
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const updateNewMessageActionCreator = (text) =>
-    ({type: UPDATE_NEW_MESSAGE, newText: text});
-
 
 export default store;
 window.store = store;
