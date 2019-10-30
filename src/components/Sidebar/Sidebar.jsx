@@ -1,23 +1,15 @@
 import React from 'react';
 import s from './Sidebar.module.css';
-import Friends from "./Friends/Friends";
 import Navbar from "./Navbar/Navbar";
-import StoreContext from "../../CreateContext";
+import FriendsContainer from "./Friends/FriendsContainer";
 
 
 const Sidebar = (props) => {
-     return (
-        <StoreContext.Consumer>
-            {
-                (store) => (
-                    <div className={s.sidebar}>
-                        <Navbar/>
-                        <h3>Верные друзья</h3>
-                        <Friends friends={store.getState().sidebarPage.friends}/>
-                    </div>
-                )
-            }
-        </StoreContext.Consumer>
+    return (
+        <div className={s.sidebar}>
+            <Navbar/>
+            <FriendsContainer />
+        </div>
     )
 };
 

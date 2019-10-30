@@ -8,10 +8,10 @@ const Friends = (props) => {
         <Friend name={f.name} avatarURL={f.avatarURL} />
     );
 
-
     return (
-        <div className={s.friends}>
-            {friends}
+        <div>
+            <h3>Верные друзья</h3>
+            <div className={s.friends}>{friends}</div>
         </div>
     )
 };

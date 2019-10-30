@@ -31,19 +31,18 @@ let initialState = {
 
 let dialogsReduser = (state = initialState, action) => {
 
-    switch(action.type) {
+    switch (action.type) {
         case ADD_MESSAGE:
-            let newMessage = {
-                    id: 7,
-                    message: state.newMessage
-                }
-            ;
-            state.messages.push(newMessage);
-            state.newMessage = '';
-            return state;
+            return {
+                ...state,
+                messages: [...state.messages, {id: 7, message: state.newMessage}],
+                newMessage: ''
+            };
         case UPDATE_NEW_MESSAGE:
-            state.newMessage = action.newText;
-            return state;
+            return {
+                ...state,
+                newMessage: action.newText
+            };
         default:
             return state;
     }
