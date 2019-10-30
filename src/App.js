@@ -17,8 +17,8 @@ const App = (props) => {
             {/*{props.state.sidebar.friends[1].toString()}*/}
             <Sidebar store={props.store}/>
             <div className='app-wrapper-content'>
-                <Route path='/Dialogs' render={() => <DialogsContainer store={props.store} />}/>
-                <Route path='/Profile' render={() => <Profile store={props.store}/> } />
+                <Route path='/Dialogs' render={() => <DialogsContainer  />}/>
+                <Route path='/Profile' render={() => <Profile /> } />
                 <Route path='/News' component={News}/>
                 <Route path='/Music' component={Music}/>
                 <Route path='/Settings' component={Settings}/>
