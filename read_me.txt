@@ -23,3 +23,18 @@ npm install react-router-dom -save
 5. Рисуем компонетны
 6. Создаем обработчики OnClick OnChange и отображение value
 7. Прокидываем колбэки функций логики BLL.
+
+
+DDD почитать эту книгу
+
+Разработка странички
+1. Сделать ссылку (Navbar)
+2. Сделать роут (App) и отрисовать заготовку
+3. Создать каталог для странички, внутри него создать файл x.jsx xContainer.js x.module.css
+4. Создать файл redux/x-reduser.js, накидать примерный initial_state, создать функцию xReduser, функции ActionCreators
+5. Добавить xReduser в список редьюсеров для функции создания хранилища createStore
+6. Сделать заготовки функций в xContainer.js
+   const xContainer = connect(mapStateToProps, mapDispatchToProps)(x);
+   и т.д.
+7. Нарисовать разметку и действия в x.jsx, по ходу дела формировать нужные пропсы, функции диспатч в xContainer.js
+

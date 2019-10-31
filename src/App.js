@@ -8,6 +8,7 @@ import Settings from "./components/Settings/Settings";
 import {Route} from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = (props) => {
     return (
@@ -22,6 +23,8 @@ const App = (props) => {
                 <Route path='/News' component={News}/>
                 <Route path='/Music' component={Music}/>
                 <Route path='/Settings' component={Settings}/>
+                <Route path='/Users' render = {() => <UsersContainer />} />
+
             </div>
             <footer className='footer'>footer</footer>
         </div>
