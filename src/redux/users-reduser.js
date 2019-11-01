@@ -1,6 +1,8 @@
 const SET_USERS = 'SET_USERS';
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 
 let initial_state = {
@@ -13,7 +15,11 @@ let initial_state = {
         {id: 3,  fotoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTxI6JHMmw_bK4a8C4ipDGuJx3bpWx2hC2I5_uEM6Q7HVv4Q_zs',
             followed: true, fullName: 'Lev', status: 'I am Bossss', location: {city: 'Pekin', country: 'China'}}
 */
-    ]
+    ],
+    pageSize: 10,
+    totalUsersCount: 0,
+    currentPage: 1
+
 };
 
 let usersReduser = (state = initial_state, action) => {
@@ -46,7 +52,19 @@ let usersReduser = (state = initial_state, action) => {
         case SET_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users]
+                users: [...action.users]
+            };
+
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.pageNumber
+            };
+
+        case SET_TOTAL_USERS_COUNT:
+            return {
+                ...state,
+                totalUsersCount: action.totalUsersCount
             };
 
         default:
@@ -58,5 +76,7 @@ let usersReduser = (state = initial_state, action) => {
 export const followAC = (userId) => ({type: FOLLOW, userId});
 export const unfollowAC = (userId) => ({type: UNFOLLOW, userId});
 export const setUsersAC = (users) => ({type: SET_USERS, users});
+export const setCurrentPageAC = (pageNumber) => ({type: SET_CURRENT_PAGE, pageNumber});
+export const setTotalUsersCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
 
 export default usersReduser;
