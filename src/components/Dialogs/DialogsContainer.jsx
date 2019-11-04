@@ -1,7 +1,26 @@
 import React from 'react';
-import {addMessage, changeNewMessage} from "../../redux/dialogs-reduser";
+import {addMessage, changeNewMessage, setUserProfile} from "../../redux/dialogs-reduser";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
+import * as axios from "axios";
+
+
+class  DialogsContainer extends React.Component{
+
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
+            this.props.setUserProfile(response.data);
+        });
+    }
+
+    render() {
+        debugger
+        return <Dialogs {...this.props} />
+    }
+
+
+}
+
 
 let mapStateToProps = (state) => {
     return {
@@ -22,6 +41,4 @@ let mapStateToProps = (state) => {
     }
 };*/
 
-const DialogsContainer = connect(mapStateToProps, {addMessage, changeNewMessage})(Dialogs);
-
-export default DialogsContainer;
+export default connect(mapStateToProps, {addMessage, changeNewMessage, setUserProfile})(DialogsContainer);
