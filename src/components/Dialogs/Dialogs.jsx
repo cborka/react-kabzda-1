@@ -21,18 +21,17 @@ const Dialogs = (props) => {
         props.changeNewMessage(text);
     };
 
+/*
     let img = 'Тут будет фото';
     if(props.profile)
         img = <img src={props.profile.photos.large} />;
-debugger
+*/
     return (
         <div className={s.dialogs}>
 
             <div className={s.dialogsItems}>
                 {dialogsElements}
             </div>
-
-            {img}
             <div className={s.messages}>
                 <div>{messagesElements}</div>
                 <div>

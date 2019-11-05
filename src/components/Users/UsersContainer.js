@@ -1,13 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {
-    follow,
-    setCurrentPage,
-    setIsFetching,
-    setTotalUsersCount,
-    setUsers,
-    unfollow
-} from "../../redux/users-reduser";
+import {follow, setCurrentPage, setIsFetching, setTotalUsersCount, setUsers, unfollow} from "../../redux/users-reduser";
 import * as axios from "axios";
 import Users from "./Users";
 import Fetching from "../common/Fetching/Fetching";
@@ -75,6 +68,8 @@ let mapDispatchToProps = (dispatch) => {
     }
 };
 */
+
+
 
 export default connect(mapStateToProps, {
     follow,
