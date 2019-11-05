@@ -8,6 +8,7 @@ import * as axios from "axios";
 class  DialogsContainer extends React.Component{
 
     componentDidMount() {
+
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
             this.props.setUserProfile(response.data);
         });
@@ -15,7 +16,7 @@ class  DialogsContainer extends React.Component{
 
     render() {
         debugger
-        return <Dialogs {...this.props} />
+        return <Dialogs {...this.props} profile={this.props.profile} />
     }
 
 
@@ -26,7 +27,8 @@ let mapStateToProps = (state) => {
     return {
         newMessage: state.dialogsPage.newMessage,
         dialogs: state.dialogsPage.dialogs,
-        messages: state.dialogsPage.messages
+        messages: state.dialogsPage.messages,
+        profile: state.dialogsPage.profile
     }
 };
 
