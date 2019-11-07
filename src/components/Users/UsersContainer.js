@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {follow, getUsers, unfollow} from "../../redux/users-reduser";
 import Users from "./Users";
 import Fetching from "../common/Fetching/Fetching";
+import {compose} from "redux";
 
 class UserContainer extends React.Component {
 
@@ -81,6 +82,7 @@ let mapDispatchToProps = (dispatch) => {
 */
 
 
+/*
 export default connect(mapStateToProps, {
     follow,
     unfollow,
@@ -92,3 +94,9 @@ export default connect(mapStateToProps, {
     getUsers
 
 })(UserContainer);
+
+*/
+
+export default compose (
+    connect(mapStateToProps, {follow,unfollow, getUsers})
+)(UserContainer)

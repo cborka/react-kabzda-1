@@ -12,6 +12,22 @@ npm start
 19 урок
 npm install react-router-dom -save
 
+npm install react-redux -save
+npm install redux-thunk -save
+короче вот
+  "dependencies": {
+    "axios": "^0.19.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
+  },
+
+
+
 
 
 1. Добавить структуру данных

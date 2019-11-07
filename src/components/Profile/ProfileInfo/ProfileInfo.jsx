@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
 
@@ -7,33 +8,39 @@ const ProfileInfo = (props) => {
     if (!props.profile)
         return (
             <div className={s.profileInfo}>
+                {/*
                 <div>
                     <img src='https://cdn.pixabay.com/photo/2017/10/10/22/24/wide-format-2839089_960_720.jpg'></img>
                 </div>
+*/}
 
                 <div className={s.descriptionBlock}>
-
-                    <img className={s.ava}
-                         src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSTS7LFEGuHZFKOc_AtQudyknAdpG1PtpKDX-81XeaB_6xJstKD'></img>
-
-                </div>
+                    <div>
+                        <img className={s.ava}
+                             src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSTS7LFEGuHZFKOc_AtQudyknAdpG1PtpKDX-81XeaB_6xJstKD'></img>
+                    </div>
+                 </div>
             </div>
         );
 
 
     return (
         <div className={s.profileInfo}>
+{/*
             <div>
                 <img src='https://cdn.pixabay.com/photo/2017/10/10/22/24/wide-format-2839089_960_720.jpg'></img>
+            </div>
+*/}
+            <div>
+                <ProfileStatus profileStatus='Hi, this is me!' />
             </div>
 
             <div className={s.descriptionBlock}>
 
-                <img className={s.ava} src={props.profile.photos.small}/>
+                <div><img className={s.ava} src={props.profile.photos.small}/></div>
                 <div>Обо мне: {props.profile.aboutMe}</div>
                 <div>Звать меня: {props.profile.fullName}</div>
                 <div>Мой ВК: {props.profile.contacts.vk}</div>
-
 
 
                 {/*
