@@ -3,21 +3,25 @@ import {addMessage, changeNewMessage, setUserProfile} from "../../redux/dialogs-
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import * as axios from "axios";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 class  DialogsContainer extends React.Component{
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
+ /*       axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
             this.props.setUserProfile(response.data);
         });
-    }
+*/    }
 
     render() {
+/*
+        if(!this.props.isAuth)
+            return <Redirect to='/Login' />
+*/
+
         return <Dialogs {...this.props} profile={this.props.profile} />
     }
-
-
 }
 
 
@@ -26,7 +30,8 @@ let mapStateToProps = (state) => {
         newMessage: state.dialogsPage.newMessage,
         dialogs: state.dialogsPage.dialogs,
         messages: state.dialogsPage.messages,
-        profile: state.dialogsPage.profile
+        profile: state.dialogsPage.profile,
+        isAuth: state.auth.isAuth
     }
 };
 
@@ -41,4 +46,4 @@ let mapStateToProps = (state) => {
     }
 };*/
 
-export default connect(mapStateToProps, {addMessage, changeNewMessage, setUserProfile})(DialogsContainer);
+export default connect(mapStateToProps, {addMessage, changeNewMessage, setUserProfile})(withAuthRedirect(DialogsContainer));

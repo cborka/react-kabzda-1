@@ -1,3 +1,5 @@
+import {userApi} from "../api/api";
+
 const GET_USER_AUTH_INFO = 'ADD-GET_USER_AUTH_INFO';
 
 let initialState = {
@@ -17,6 +19,20 @@ let authReduser = (state = initialState, action) => {
     }
 };
 
-export const getUserAuthInfo = (userId, login, email) => ({type: GET_USER_AUTH_INFO, userData: {userId, login, email}});
+export const getUserAuthInfoAC = (userId, login, email) => ({type: GET_USER_AUTH_INFO, userData: {userId, login, email}});
+
+
+export const getUserAuthInfo = () => {
+    return (dispatch) => {
+        userApi.getAuthMe()
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(getUserAuthInfoAC(data.data.id, data.data.login, data.data.email));
+                }
+            });
+
+    }
+};
+
 
 export default authReduser;
