@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
 import ProfileStatus from "./ProfileStatus";
+import Profile from "../ProfileContainer";
 
 const ProfileInfo = (props) => {
 
@@ -23,7 +24,6 @@ const ProfileInfo = (props) => {
             </div>
         );
 
-
     return (
         <div className={s.profileInfo}>
 {/*
@@ -32,12 +32,12 @@ const ProfileInfo = (props) => {
             </div>
 */}
             <div>
-                <ProfileStatus profileStatus='Hi, this is me!' />
+                <ProfileStatus  status={props.status} putStatus={props.putStatus} profileStatus='Hi, this is me!' />
             </div>
 
             <div className={s.descriptionBlock}>
-
                 <div><img className={s.ava} src={props.profile.photos.small}/></div>
+                <div>Статус: {props.status}</div>
                 <div>Обо мне: {props.profile.aboutMe}</div>
                 <div>Звать меня: {props.profile.fullName}</div>
                 <div>Мой ВК: {props.profile.contacts.vk}</div>

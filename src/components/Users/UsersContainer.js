@@ -8,7 +8,7 @@ import {compose} from "redux";
 class UserContainer extends React.Component {
 
     componentDidMount() {
-        if (this.props.users.length == 0) {
+        if (this.props.users.length === 0) {
             this.props.getUsers(this.props.currentPage, this.props.pageSize);
             /*           this.props.setIsFetching(true);
                        userApi.getUsers (this.props.currentPage, this.props.pageSize)
