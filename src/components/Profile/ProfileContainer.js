@@ -52,6 +52,6 @@ export default connect(mapDispatchToProps, {getUserProfile})(withAuthRedirect(wi
 
 export default compose (
     connect(mapDispatchToProps, {getUserProfile, getUserStatus, putStatus}),
-//    withAuthRedirect,
+    withAuthRedirect,
     withRouter
 )(ProfileContainer);

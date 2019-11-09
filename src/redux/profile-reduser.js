@@ -1,7 +1,6 @@
-import {profileApi, userApi} from "../api/api";
+import {profileApi} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const GET_USER_PROFILE = 'GET_USER_PROFILE';
 const GET_USER_STATUS = 'GET_USER_STATUS';
 
@@ -11,7 +10,6 @@ let initialState = {
         {id: 1, post: "Хорошо!", likeCount: 15},
         {id: 1, post: "Hello all!", likeCount: 25}
     ],
-    newPostText: 'it-kamasutra.com',
     profile: null,
     status: null
 };
@@ -21,14 +19,9 @@ let profileReduser = (state = initialState, action) => {
         case ADD_POST:
             return {
                 ...state,
-                posts: [...state.posts, {id: 5, post: state.newPostText, likeCount: 0}],
-                newPostText: ''
+                posts: [...state.posts, {id: 5, post: action.newPostText, likeCount: 0}]
             };
-        case UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText
-            };
+
         case GET_USER_PROFILE:
             return {...state, profile: action.profile};
 
@@ -40,10 +33,7 @@ let profileReduser = (state = initialState, action) => {
     }
 };
 
-export const addPostActionCreator = () => ({type: ADD_POST});
-
-export const updateNewPostActionCreator = (text) =>
-    ({type: UPDATE_NEW_POST_TEXT, newText: text});
+export const addPostActionCreator = (newPostText) => ({type: ADD_POST, newPostText});
 
 export const getUserProfileAC = (data) => ({type: GET_USER_PROFILE, profile: data});
 export const getUserStatusAC = (data) => ({type: GET_USER_STATUS, status: data});
