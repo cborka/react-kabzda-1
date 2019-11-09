@@ -5,7 +5,6 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const GET_USER_PROFILE = 'GET_USER_PROFILE';
 const GET_USER_STATUS = 'GET_USER_STATUS';
 
-
 let initialState = {
     posts: [
         {id: 1, post: "Как дела", likeCount: 5},
@@ -36,7 +35,7 @@ let profileReduser = (state = initialState, action) => {
         case GET_USER_STATUS:
             return {...state, status: action.status};
 
-        default:
+         default:
             return state;
     }
 };
@@ -51,7 +50,7 @@ export const getUserStatusAC = (data) => ({type: GET_USER_STATUS, status: data})
 
 
 export const getUserProfile = (userId) => (dispatch) => {
-    userApi.getUserProfile(userId)
+    profileApi.getUserProfile(userId)
         .then((data) => {
             dispatch(getUserProfileAC(data));
         });

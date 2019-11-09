@@ -35,7 +35,6 @@ export const userApi = {
 };
 
 export const profileApi = {
-
     getUserProfile(userId) {
         return instance.get(`profile/` + userId).then(response => response.data)
     },
@@ -44,6 +43,17 @@ export const profileApi = {
     },
     putStatus(status) {
         return instance.put(`profile/status`, {status: status}).then(response => response.data)
+    }
+};
+
+export const loginApi = {
+
+    doLogin(email, password, rememberMe) {
+        return instance.post(`auth/login`, {email, password, rememberMe}).then(response => response.data)
+    },
+    doExit() {
+        debugger
+        return instance.delete(`auth/login`).then(response => response.data)
     }
 
 };

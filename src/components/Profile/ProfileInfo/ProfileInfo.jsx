@@ -25,6 +25,7 @@ const ProfileInfo = (props) => {
         );
 
     return (
+
         <div className={s.profileInfo}>
 {/*
             <div>
@@ -36,11 +37,13 @@ const ProfileInfo = (props) => {
             </div>
 
             <div className={s.descriptionBlock}>
+
                 <div><img className={s.ava} src={props.profile.photos.small}/></div>
                 <div>Статус: {props.status}</div>
                 <div>Обо мне: {props.profile.aboutMe}</div>
                 <div>Звать меня: {props.profile.fullName}</div>
                 <div>Мой ВК: {props.profile.contacts.vk}</div>
+
 
 
                 {/*
