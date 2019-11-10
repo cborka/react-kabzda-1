@@ -1,5 +1,4 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
@@ -27,7 +26,6 @@ let initialState = {
         {id: 1, message: "Yo"},
         {id: 1, message: "Yo"}
     ],
-    newMessage: 'newMessage',
     profile: null
 };
 
@@ -37,14 +35,9 @@ let dialogsReduser = (state = initialState, action) => {
         case ADD_MESSAGE:
             return {
                 ...state,
-                messages: [...state.messages, {id: 7, message: state.newMessage}],
-                newMessage: ''
+                messages: [...state.messages, {id: 7, message: action.newMessageText}]
             };
-        case UPDATE_NEW_MESSAGE:
-            return {
-                ...state,
-                newMessage: action.newText
-            };
+
         case SET_USER_PROFILE:
             return { ...state, profile: action.profile}
         default:
@@ -52,10 +45,7 @@ let dialogsReduser = (state = initialState, action) => {
     }
 };
 
-export const addMessage = () => ({type: ADD_MESSAGE});
-
-export const changeNewMessage = (text) =>
-    ({type: UPDATE_NEW_MESSAGE, newText: text});
+export const addMessage = (newMessageText) => ({type: ADD_MESSAGE, newMessageText});
 
 export const setUserProfile = (data) => ({type: SET_USER_PROFILE, profile: data});
 

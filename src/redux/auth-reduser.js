@@ -15,7 +15,6 @@ let initialState = {
 let authReduser = (state = initialState, action) => {
     switch (action.type) {
         case GET_USER_AUTH_INFO:
-            debugger
             return {...state, ...action.userData};
 
 /*

@@ -2,7 +2,6 @@ import React from 'react';
 import {addMessage, changeNewMessage, setUserProfile} from "../../redux/dialogs-reduser";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
-import * as axios from "axios";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
@@ -50,6 +49,6 @@ let mapStateToProps = (state) => {
 //export default connect(mapStateToProps, {addMessage, changeNewMessage, setUserProfile})(withAuthRedirect(DialogsContainer));
 
 export default compose (
-    connect(mapStateToProps, {addMessage, changeNewMessage, setUserProfile}),
+    connect(mapStateToProps, {addMessage, setUserProfile}),
     withAuthRedirect
 )(DialogsContainer);
