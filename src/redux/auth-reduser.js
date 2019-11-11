@@ -1,4 +1,6 @@
 import {loginApi, userApi} from "../api/api";
+import {stopSubmit} from "redux-form";
+
 
 const GET_USER_AUTH_INFO = 'ADD-GET_USER_AUTH_INFO';
 //const DO_LOGIN = 'DO_LOGIN';
@@ -56,13 +58,16 @@ export const getUserAuthInfo = () => {
 };
 
 export const doLogin = (email, password, rememberMe) => (dispatch) => {
+
     loginApi.doLogin(email, password, rememberMe)
         .then((data) => {
             if (data.resultCode === 0) {
                 dispatch(getUserAuthInfo());
-            }
+             }
             else {
                 dispatch(getUserAuthInfoAC(null, null, null, false));
+                dispatch(stopSubmit("login", {_error: (data.messages.length > 0 ? data.messages[0] : "Вах, ощибочка вышла!")}));
+
             }
         });
 };
