@@ -17,7 +17,7 @@ const App = (props) => {
 
         <div className='app-wrapper'>
             <HeaderContainer />
-            {/*{props.state.sidebar.friends[1].toString()}*/}
+            {/*{props.state.sidebar.friends[1].toString()} */}
             <Sidebar store={props.store}/>
             <div className='app-wrapper-content'>
                 <Route path='/Dialogs' render={() => <DialogsContainer  />}/>
